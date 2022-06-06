@@ -1,0 +1,48 @@
+{
+  "maskable": true,
+  "maskable_icon": "/safari-pinned-tab.svg",
+  "name": "Next blog test",
+  "short_name": "Blog",
+  "theme_color": "#f69435",
+  "background_color": "#f69435",
+  "display": "standalone",
+  "orientation": "portrait",
+  "purpose": "any maskable",
+  "scope": "/",
+  "start_url": "/",
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "com.google.samples.apps.iosched"
+    }
+  ],
+
+  "description": "Automatically generate a fully functional web app manifest along with size-optimized icons for your PWA",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
