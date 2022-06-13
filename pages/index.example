@@ -11,20 +11,16 @@ import { getHeader } from "../graphql/header";
 import { ssrCache } from "../lib/graphql";
 import { type Props } from "../types/Props";
 import { getProps } from "../utils/getProps";
-import { type Header as HeaderType } from "../types/Header";
+import { type Header } from "../types/Header";
 import { type QueryResult } from "../types/QueryResult";
 import config from "../utils/config.json";
-import dynamic from "next/dynamic";
-import { Header } from "../components/Header";
-
-// const Header = dynamic(() => import("../components/Header"));
 
 const Home: NextPage<Props> = () => {
   const [result] = useQuery({
     query: getHeader,
     variables: { id: 2 },
   });
-  const queryResult: QueryResult<HeaderType> = result;
+  const queryResult: QueryResult<Header> = result;
   const { data, error, fetching } = queryResult;
   if (fetching) {
     return <p className="bg-slate-900 text-slate-200">Loading...</p>;
@@ -39,11 +35,24 @@ const Home: NextPage<Props> = () => {
     return <p className="bg-slate-900 text-slate-200">No data</p>;
   }
   return (
-    <Header className={data.css_class} headerLevel={data.header_level}>
-      {data.text}
-    </Header>
+    <pre className="bg-slate-900 text-slate-200">
+      {JSON.stringify(data, null, 2)}
+    </pre>
   );
 };
+
+// export const getServerSideProps: GetServerSideProps<
+//   Props,
+//   NextParsedUrlQuery,
+//   Props
+// > = async (): Promise<GetServerSidePropsResult<Props>> => {
+//   await getProps(getHeader, { id: 2 });
+//   return {
+//     props: {
+//       urqlState: ssrCache.extractData(),
+//     },
+//   };
+// };
 
 export const getStaticProps: GetStaticProps<
   Props,
